@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+
+{% block content %}
+
+    <div class="panel panel-headline">
+        <div class="panel-heading">
+
+            <!-- MYBLOCK -->
+
+            <h3 class="panel-title">Tasks</h3>
+
+            <form class="site-from" action=" {% url 'payments:tasks' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="create">
+            </form>
+
+            <!-- END MYBLOCK -->
+
+        </div>
+    </div>
+
+    <div class="panel panel-headline">
+        <div class="panel-heading">
+
+            <!-- MYBLOCK -->
+
+            <p class="panel-subtitle">todo: ???</p>
+
+            <table style="width:100%">
+              <tr>
+                <th>No.</th>
+                <th>Done</th>
+                <th>Task</th>
+                <th>Deadline</th>
+              </tr>
+
+            {% for task in tasks %}
+
+              <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ task.done }}</td>
+                <td>{{ task.name}}</td>
+                <td>{{ task.deadline }}</td>
+              </tr>
+
+            {% endfor %}
+            </table>
+
+            <!-- END MYBLOCK -->
+
+        </div>
+    </div>
+
+    <div class="panel panel-headline">
+        <div class="panel-heading">
+
+            <!-- MYBLOCK -->
+
+            <p class="panel-subtitle">todo: buttons make complete whatever</p>
+
+            <!-- END MYBLOCK -->
+
+        </div>
+    </div>
+
+{% endblock %}
