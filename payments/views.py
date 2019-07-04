@@ -23,10 +23,14 @@ def docs_view(request):
 
 def tasks_view(request):
     tasks = Task.objects.all().order_by('-id')
+
     if request.method == 'POST':
         done = request.POST.get('Done', False)
         reset = request.POST.get('Reset', False)
         update = request.POST.get('UpDate', False)
+        navigate = request.POST.get('Navigate', False)
+        if navigate:
+            pass
         if done:
             tasks.filter(pk=done).update(done=True)
         if reset:
@@ -41,7 +45,9 @@ def tasks_view(request):
                 instance.save()
         form = TaskForm()
     else:
+        now = datetime.datetime.now()
         form = TaskForm()
+        tasks.filter(date__range=(datetime(now.year, now.month, 1), datetime(now.year, now.month, 31)))
     return render(request, "payments/tasks.html", {'tasks': tasks,
                                                    'form': form})
 
