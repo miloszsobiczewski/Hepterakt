@@ -28,4 +28,4 @@ class Task(models.Model):
     deadline = models.DateField()
 
     def __str__(self):
-        return self.task
+        return self.name

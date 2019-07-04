@@ -15,4 +15,5 @@ urlpatterns = [
     url(r'^admin/', views.go_admin, name="go-admin"),
     url(r'^tasks/', views.tasks_view, name='tasks'),
     url(r'^download/', views.download, name='download'),
+    url(r'^documents/', views.docs_view, name='documents'),
 ]

@@ -21,7 +21,7 @@ class TaskForm(forms.ModelForm):
     name = forms.CharField(required=True, widget=forms.TextInput(
         attrs={'placeholder': 'Task name', 'style': 'width: 400px'}), label=False)
     deadline = forms.ChoiceField(
-        choices=[(datetime.date(2019, 6, 1),
+        choices=[(datetime.date(datetime.datetime.now().year, datetime.datetime.now().month, x),
                   ('%s-%s-%s' % (str(x), datetime.datetime.now().month, datetime.datetime.now().year)))
                  for x in range(1, 32)], required=True)
 

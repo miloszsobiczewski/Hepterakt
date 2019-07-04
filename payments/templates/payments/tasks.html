@@ -10,11 +10,26 @@
 
             <h3 class="panel-title">Tasks</h3>
 
-            <form class="site-from" action=" {% url 'payments:tasks' %}" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form }}
-            <input type="submit" value="create">
+            <form class="site-form" action="{% url 'payments:tasks' %}" method="post" id="Reset">
+           {% csrf_token %}
+            <button type="submit" form="Reset" name="Reset" value="True">
+                <i class="lnr lnr-trash" style="color:red">Reset tasks</i>
+            </button>
+
+            <button type="submit" form="Reset" name="UpDate" value="True">
+                <i class="lnr lnr-magic-wand" style="color:red">UpDate</i>
+            </button>
+
             </form>
+
+            <br>
+
+            <div class="alert-success">
+                fsfdsfsdf
+            </div>
+            <div class="alert-danger">
+                fsfdsfsdf
+            </div>
 
             <!-- END MYBLOCK -->
 
@@ -69,27 +84,11 @@
 
             <!-- MYBLOCK -->
 
-            <form class="site-form" action="{% url 'payments:tasks' %}" method="post" id="Reset">
-           {% csrf_token %}
-            <button type="submit" form="Reset" name="Reset" value="True">
-                <i class="lnr lnr-trash" style="color:red">Reset tasks</i>
-            </button>
-
-            <button type="submit" form="Reset" name="UpDate" value="True">
-                <i class="lnr lnr-magic-wand" style="color:red">UpDate</i>
-            </button>
-
+            <form class="site-from" action=" {% url 'payments:tasks' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="create">
             </form>
-
-            <br>
-
-            <div class="alert-success">
-                fsfdsfsdf
-            </div>
-            <div class="alert-danger">
-                fsfdsfsdf
-            </div>
-            <p class="panel-subtitle">todo: buttons make complete whatever</p>
 
             <!-- END MYBLOCK -->
 

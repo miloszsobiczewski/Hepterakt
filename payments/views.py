@@ -1,8 +1,10 @@
 import os
+from datetime import timedelta
 from django.conf import settings
 from django.http import HttpResponse, Http404
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
+from django.db.models import F
 
 from .models import Payment, Task
 from .forms import PaymentForm, TaskForm
@@ -10,6 +12,13 @@ from .forms import PaymentForm, TaskForm
 
 def go_admin(request):
     return HttpResponseRedirect('/admin/')
+
+
+def docs_view(request):
+    payments = Payment.objects.all().order_by('-id')
+    form = []
+    return render(request, "payments/documents.html", {'payments': payments,
+                                                       'form': form})
 
 
 def tasks_view(request):
@@ -23,7 +32,7 @@ def tasks_view(request):
         if reset:
             tasks.update(done=False)
         if update:
-            tasks.update(done=False)
+            tasks.update(deadline=F('deadline') + timedelta(365 / 12))
         else:
             form = TaskForm(request.POST)
             if form.is_valid():
