@@ -36,16 +36,27 @@
                 <th>Deadline</th>
               </tr>
 
-            {% for task in tasks %}
 
+            <form class="site-form" action="{% url 'payments:tasks' %}" method="post" id="GetDone">
+            {% for task in tasks %}
+            {% csrf_token   %}
               <tr>
                 <td>{{ forloop.counter }}</td>
-                <td>{{ task.done }}</td>
+                <td>
+                    {% if task.done %}
+                        <span class="lnr lnr-checkmark-circle" style="color:green"></span>
+                    {% else %}
+                        <button type="submit" form="GetDone" name="Done" value="{{ task.id }}">
+                            <i class="lnr lnr-cross-circle" style="color:red"></i>
+                        </button>
+                    {% endif %}
+                </td>
                 <td>{{ task.name}}</td>
                 <td>{{ task.deadline }}</td>
               </tr>
 
             {% endfor %}
+            </form>
             </table>
 
             <!-- END MYBLOCK -->
@@ -58,6 +69,26 @@
 
             <!-- MYBLOCK -->
 
+            <form class="site-form" action="{% url 'payments:tasks' %}" method="post" id="Reset">
+           {% csrf_token %}
+            <button type="submit" form="Reset" name="Reset" value="True">
+                <i class="lnr lnr-trash" style="color:red">Reset tasks</i>
+            </button>
+
+            <button type="submit" form="Reset" name="UpDate" value="True">
+                <i class="lnr lnr-magic-wand" style="color:red">UpDate</i>
+            </button>
+
+            </form>
+
+            <br>
+
+            <div class="alert-success">
+                fsfdsfsdf
+            </div>
+            <div class="alert-danger">
+                fsfdsfsdf
+            </div>
             <p class="panel-subtitle">todo: buttons make complete whatever</p>
 
             <!-- END MYBLOCK -->

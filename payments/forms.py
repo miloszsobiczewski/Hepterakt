@@ -1,3 +1,4 @@
+import datetime
 from django import forms
 from .models import Payment, Task
 
@@ -9,7 +10,7 @@ class PaymentForm(forms.ModelForm):
     description = forms.CharField(required=False, widget=forms.TextInput(
         attrs={'placeholder': 'Description', 'style': 'width: 800px'}),
                                   label=False)
-    invoice = forms.FileField(label=False)
+    invoice = forms.FileField(label=False, required=False)
 
     class Meta:
         model = Payment
@@ -19,6 +20,10 @@ class PaymentForm(forms.ModelForm):
 class TaskForm(forms.ModelForm):
     name = forms.CharField(required=True, widget=forms.TextInput(
         attrs={'placeholder': 'Task name', 'style': 'width: 400px'}), label=False)
+    deadline = forms.ChoiceField(
+        choices=[(datetime.date(2019, 6, 1),
+                  ('%s-%s-%s' % (str(x), datetime.datetime.now().month, datetime.datetime.now().year)))
+                 for x in range(1, 32)], required=True)
 
     class Meta:
         model = Task

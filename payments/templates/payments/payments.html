@@ -41,16 +41,29 @@
               </tr>
 
             <form class="site-form" action="{% url 'payments:download' %}" method="post" id="Download">
+
             {% for payment in payments %}
             {% csrf_token %}
 
               <tr>
                 <td>{{ forloop.counter }}
                 <td>
+<!--                    {% if payment.paid %}-->
+<!--                        <span class="lnr lnr-checkmark-circle" style="color:green"></span>-->
+<!--                    {% else %}-->
+<!--                        <button type="submit" form="GetDone" name="Done" value="{{ payment.id }}">-->
+<!--                            <i class="lnr lnr-cross-circle" style="color:red"></i>-->
+<!--                        </button>-->
+<!--                    {% endif %}-->
                     {% if payment.paid %}
-                        <span class="lnr lnr-checkmark-circle" style="color:green"></span>
+                        <i class="lnr lnr-checkmark-circle" style="color:green"></i>
                     {% else %}
-                        <span class="lnr lnr-cross-circle" style="color:red"></span>
+                        <form class="site-form" action="{% url 'payments:payments' %}" method="post" id="GetDone">
+                       {% csrf_token %}
+                        <button type="submit" form="GetDone" name="Done" value="{{ payment.id }}">
+                            <i class="lnr lnr-cross-circle" style="color:red"></i>
+                        </button>
+                        </form>
                     {% endif %}
                 </td>
                 <td>{{ payment.name }}</td>

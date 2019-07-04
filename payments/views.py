@@ -15,11 +15,22 @@ def go_admin(request):
 def tasks_view(request):
     tasks = Task.objects.all().order_by('-id')
     if request.method == 'POST':
-        form = TaskForm(request.POST, request.FILES)
-        if form.is_valid():
-            instance = form.save(commit=False)
-            instance.user = request.user
-            instance.save()
+        done = request.POST.get('Done', False)
+        reset = request.POST.get('Reset', False)
+        update = request.POST.get('UpDate', False)
+        if done:
+            tasks.filter(pk=done).update(done=True)
+        if reset:
+            tasks.update(done=False)
+        if update:
+            tasks.update(done=False)
+        else:
+            form = TaskForm(request.POST)
+            if form.is_valid():
+                instance = form.save(commit=False)
+                instance.user = request.user
+                instance.save()
+        form = TaskForm()
     else:
         form = TaskForm()
     return render(request, "payments/tasks.html", {'tasks': tasks,
@@ -29,11 +40,16 @@ def tasks_view(request):
 def payments_view(request):
     payments = Payment.objects.all().order_by('-id')
     if request.method == 'POST':
-        form = PaymentForm(request.POST, request.FILES)
-        if form.is_valid():
-            instance = form.save(commit=False)
-            instance.user = request.user
-            instance.save()
+        paid = request.POST.get('Done', False)
+        if paid:
+            payments.filter(pk=paid).update(paid=True)
+            form = PaymentForm()
+        else:
+            form = PaymentForm(request.POST, request.FILES)
+            if form.is_valid():
+                instance = form.save(commit=False)
+                instance.user = request.user
+                instance.save()
     else:
         form = PaymentForm()
     return render(request, "payments/payments.html", {'payments': payments,

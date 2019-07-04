@@ -24,7 +24,7 @@ class Payment(models.Model):
 
 class Task(models.Model):
     name = models.CharField(max_length=200)
-    done = models.BooleanField()
+    done = models.BooleanField(default=False)
     deadline = models.DateField()
 
     def __str__(self):
