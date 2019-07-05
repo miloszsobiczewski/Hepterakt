@@ -173,12 +173,12 @@ html.fullscreen-bg #wrapper {
     background-color: #f8f8f8; }
   .navbar-default .brand {
     float: left;
-    padding: 5px 5px;
+    padding: 6px 10px;
     background-color: #fff; }
   @media screen and (max-width: 1024px) {
     .navbar-default .brand {
       padding-left: 30px;
-      padding-right: 15px; } }
+      padding-right: 50px; } }
   @media screen and (max-width: 992px) {
     .navbar-default .brand {
       display: none; } }

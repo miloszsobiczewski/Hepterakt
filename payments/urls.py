@@ -3,6 +3,8 @@
 # todo: przeglądanie historii wydatków
 # todo: filtrowanie wydatków - domyślnie po year/mth, możliwość zmiany (poprzedni, następny)
 # todo: add no payment documents like hour reports, my invoices ect
+# todo: middleware
+# todo: h tracking
 
 from django.conf.urls import url
 

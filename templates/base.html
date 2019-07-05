@@ -29,27 +29,38 @@
 	<div id="wrapper">
 		<!-- NAVBAR -->
 		<nav class="navbar navbar-default navbar-fixed-top">
-<!--			<div class="brand">-->
-<!--				<a href="#"><img src="#" width="250px" alt="Hepterakt" class="img-responsive logo"></a>-->
-<!--			</div>-->
+			<div class="brand">
+				<a href="index.html">
+					<img src="{% static 'assets/img/hepterakt-logo.png' %}" width="70px" alt="Klorofil Logo" class="img-responsive logo">
+				</a>
+
+			</div>
+			<div class="brand">
+				<h1>Hepterakt</h1>
+			</div>
+
 			<div class="container-fluid">
 				<div class="navbar-btn">
 					<button type="button" class="btn-toggle-fullwidth"><i class="lnr lnr-arrow-left-circle"></i></button>
 				</div>
-					<form class="navbar-form navbar-left">
 					<div class="input-group">
+
 						<!-- MIDDLE NAVBAR -->
 
 						{% block headcontent %}
 						{% endblock %}
 
-						<b>{% now "jS F Y H:i" %}</b>
+
 						<!-- END MIDDLE NAVBAR -->
+
 					</div>
-				</form>
+
 				<div id="navbar-menu">
 					<ul class="nav navbar-nav navbar-right">
-
+						<li class="dropdown">
+							<h4><b>{% now "jS F Y" %}</b></h4>
+						</li>
+						<li></li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{% static '/assets/img/logo-ruch.jpeg' %}" class="img-circle" alt="Avatar">
 								<span>{{ user.username }}</span>
@@ -58,7 +69,6 @@
 								<li><a href="#"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
 							</ul>
 						</li>
-
 					</ul>
 				</div>
 			</div>
@@ -69,6 +79,7 @@
 			<div class="sidebar-scroll">
 				<nav>
 					<ul class="nav">
+						<br>
 						<li><a href="{% url 'payments:payments' %}" class="inactive"><i class="lnr lnr-cart"></i> <span>Payments</span></a></li>
 						<li><a href="{% url 'payments:tasks' %}" class="inactive"><i class="lnr lnr-rocket"></i> <span>Tasks</span></a></li>
 <!--						<li>-->
@@ -90,8 +101,6 @@
 						<li><a href="{% url 'payments:go-admin' %}" class=""><i class="lnr lnr-cog"></i> <span>Admin</span></a></li>
 					</ul>
 				</nav>
-				<br><br><br><br><br>
-				<a href="#"><img src="{% static '/assets/img/hepterakt-logo.png' %}" width="250px" class="img-responsive logo"></a>
 			</div>
 		</div>
 		<!-- END LEFT SIDEBAR -->
