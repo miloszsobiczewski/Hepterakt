@@ -11,4 +11,5 @@ urlpatterns = [
     url(r'^download/', views.download, name='download'),
     url(r'^documents/', views.docs_view, name='documents'),
     url(r"^(?P<curr_year>[-\w]+)/(?P<curr_month>[-\w]+)/$", views.payments_view, name="filter-payments"),
+    url(r'^hours/', views.hours_view, name='hours'),
 ]

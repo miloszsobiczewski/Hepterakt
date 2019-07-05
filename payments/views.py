@@ -1,4 +1,4 @@
-import os
+import os, time
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 from django.conf import settings
@@ -15,10 +15,11 @@ def go_admin(request):
 
 
 def docs_view(request):
-    payments = Payment.objects.all().order_by('-id')
-    form = []
-    return render(request, "payments/documents.html", {'payments': payments,
-                                                       'form': form})
+    return render(request, "payments/documents.html")
+
+
+def hours_view(request):
+    return render(request, "payments/hours.html")
 
 
 def tasks_view(request):

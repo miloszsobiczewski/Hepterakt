@@ -80,22 +80,8 @@
 						<br>
 						<li><a href="{% url 'payments:payments' %}" class="inactive"><i class="lnr lnr-cart"></i> <span>Payments</span></a></li>
 						<li><a href="{% url 'payments:tasks' %}" class="inactive"><i class="lnr lnr-rocket"></i> <span>Tasks</span></a></li>
-<!--						<li>-->
-<!--							<a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>Wpłaty</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>-->
-<!--							<div id="subPages" class="collapse ">-->
-<!--								<ul class="nav">-->
-<!--									{% if user.region == 'Polska' %}-->
-<!--										<li><a href="{% url 'accounts:accounts' %}" class="">Polska</a></li>-->
-<!--										<li><a href="{% url 'accounts:region-accounts' 'Wielkopolskie' %}" class="">Wielkopolanie</a></li>-->
-<!--										<li><a href="{% url 'accounts:region-accounts' 'Mazowieckie' %}" class="">Mazowszanie</a></li>-->
-<!--										<li><a href="{% url 'accounts:region-accounts' 'Małopolskie' %}" class="">Małopolszczanie</a></li>-->
-<!--									{% else %}-->
-<!--										<li><a href="#" class="">{{ user.region }}</a></li>-->
-<!--									{% endif %}-->
-<!--								</ul>-->
-<!--							</div>-->
-<!--						</li>-->
 						<li><a href="{% url 'payments:documents' %}" class=""><i class="lnr lnr-file-empty"></i> <span>Documents</span></a></li>
+						<li><a href="{% url 'payments:hours' %}" class=""><i class="lnr lnr-clock"></i> <span>Hours</span></a></li>
 						<li><a href="{% url 'payments:go-admin' %}" class=""><i class="lnr lnr-cog"></i> <span>Admin</span></a></li>
 					</ul>
 				</nav>
