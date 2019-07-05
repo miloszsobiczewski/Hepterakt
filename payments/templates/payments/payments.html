@@ -16,10 +16,18 @@
 
             <!-- MYBLOCK -->
 
+           <p class="panel-subtitle">Filter years</p>
+
+            {% for year in payments_years %}
+                <a href="{% url 'payments:filter-payments' year curr_month %}" class="">
+                    <span class="label label-default">[ {{ year }} ]</span>
+                </a>
+            {% endfor %}
+
             <p class="panel-subtitle">Filter months</p>
 
             {% for month in payments_months %}
-                <a href="{% url 'payments:filter-payments' month %}" class="">
+                <a href="{% url 'payments:filter-payments' curr_year month %}" class="">
                     <span class="label label-default">[ {{ month }} ]</span>
                 </a>
             {% endfor %}

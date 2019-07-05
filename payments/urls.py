@@ -18,5 +18,5 @@ urlpatterns = [
     url(r'^tasks/', views.tasks_view, name='tasks'),
     url(r'^download/', views.download, name='download'),
     url(r'^documents/', views.docs_view, name='documents'),
-    url(r"^(?P<month>[-\w]+)/$", views.payments_view, name="filter-payments"),
+    url(r"^(?P<curr_year>[-\w]+)/(?P<curr_month>[-\w]+)/$", views.payments_view, name="filter-payments"),
 ]

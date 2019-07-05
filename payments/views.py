@@ -51,10 +51,12 @@ def tasks_view(request):
                                                    'form': form})
 
 
-def payments_view(request, month=None):
-    if month is None:
-        month = datetime.now().month
-    payments = Payment.objects.all().order_by('-id').filter(date__month=month)
+def payments_view(request, curr_year=None, curr_month=None):
+    if curr_month is None:
+        curr_month = datetime.now().month
+    if curr_year is None:
+        curr_year = datetime.now().year
+    payments = Payment.objects.all().order_by('-id').filter(date__month=curr_month, date__year=curr_year)
     if request.method == 'POST':
         paid = request.POST.get('Done', False)
         if paid:
@@ -71,8 +73,12 @@ def payments_view(request, month=None):
     # distinct months for page filtering
     payments_dates = Payment.objects.values_list('date', flat=True)
     payments_months = list(set([x.month for x in payments_dates]))
+    payments_years = list(set([x.year for x in payments_dates]))
     return render(request, "payments/payments.html", {'payments': payments,
                                                       'payments_months': payments_months,
+                                                      'payments_years': payments_years,
+                                                      'curr_month': curr_month,
+                                                      'curr_year': curr_year,
                                                       'form': form})
 
 
