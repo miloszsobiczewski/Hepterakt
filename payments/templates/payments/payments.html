@@ -16,21 +16,13 @@
 
             <!-- MYBLOCK -->
 
-            <form class="site-form" action="{% url 'payments:payments' %}" method="post" id="Navigate">
+            <p class="panel-subtitle">Filter months</p>
 
-            <div class="panel-body">
-                <button type="submit" form="GetDone" name="Navigate" value="Previous">
-                    <span class="label label-default">PREVIOUS</span>
-                </button>
-                <button type="submit" form="GetDone" name="Navigate" value="{{ payment.id }}">
-                    <span class="label label-default">06</span>
-                </button>
-                <button type="submit" form="GetDone" name="Navigate" value="Next">
-                    <span class="label label-default">NEXT</span>
-                </button>
-            </div>
-
-            </form>
+            {% for month in payments_months %}
+                <a href="{% url 'payments:filter-payments' month %}" class="">
+                    <span class="label label-default">[ {{ month }} ]</span>
+                </a>
+            {% endfor %}
 
             <!-- END MYBLOCK -->
 
