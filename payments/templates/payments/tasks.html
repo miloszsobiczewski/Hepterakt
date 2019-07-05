@@ -1,14 +1,20 @@
 {% extends 'base.html' %}
 {% load static from staticfiles %}
 
+{% block headcontent %}
+
+    <center>
+        <h4>Tasks</h4>
+    </center>
+
+{% endblock %}
+
 {% block content %}
 
     <div class="panel panel-headline">
         <div class="panel-heading">
 
             <!-- MYBLOCK -->
-
-            <h3 class="panel-title">Tasks</h3>
 
             <form class="site-form" action="{% url 'payments:tasks' %}" method="post" id="Reset">
            {% csrf_token %}
@@ -17,19 +23,17 @@
             </button>
 
             <button type="submit" form="Reset" name="UpDate" value="True">
-                <i class="lnr lnr-magic-wand" style="color:red">UpDate</i>
+                <i class="lnr lnr-magic-wand" style="color:blue">UpDate</i>
             </button>
 
             </form>
 
-            <br>
-
-            <div class="alert-success">
-                fsfdsfsdf
-            </div>
-            <div class="alert-danger">
-                fsfdsfsdf
-            </div>
+<!--            <div class="alert-success">-->
+<!--                fsfdsfsdf-->
+<!--            </div>-->
+<!--            <div class="alert-danger">-->
+<!--                fsfdsfsdf-->
+<!--            </div>-->
 
             <!-- END MYBLOCK -->
 

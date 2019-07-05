@@ -1,5 +1,6 @@
 import os
 from datetime import timedelta, datetime
+from dateutil.relativedelta import relativedelta
 from django.conf import settings
 from django.http import HttpResponse, Http404
 from django.shortcuts import render
@@ -27,15 +28,14 @@ def tasks_view(request):
         done = request.POST.get('Done', False)
         reset = request.POST.get('Reset', False)
         update = request.POST.get('UpDate', False)
-        navigate = request.POST.get('Navigate', False)
-        if navigate:
-            pass
         if done:
             tasks.filter(pk=done).update(done=True)
         if reset:
             tasks.update(done=False)
         if update:
-            tasks.update(deadline=F('deadline') + timedelta(365 / 12))
+            dates = tasks.values_list('id', 'deadline')
+            updated_dates = [(x[0], x[1] + relativedelta(months=1)) for x in dates]
+            [tasks.filter(pk=x[0]).update(deadline=x[1]) for x in updated_dates]
         else:
             form = TaskForm(request.POST)
             if form.is_valid():
@@ -44,9 +44,7 @@ def tasks_view(request):
                 instance.save()
         form = TaskForm()
     else:
-        now = datetime.now()
         form = TaskForm()
-        tasks.filter(date__range=(datetime(now.year, now.month, 1), datetime(now.year, now.month, 31)))
     return render(request, "payments/tasks.html", {'tasks': tasks,
                                                    'form': form})
 
