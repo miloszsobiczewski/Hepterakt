@@ -1,11 +1,10 @@
 import os
-from datetime import timedelta, datetime
+from datetime import datetime
 from dateutil.relativedelta import relativedelta
 from django.conf import settings
 from django.http import HttpResponse, Http404
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from django.db.models import F
 
 from .models import Payment, Task
 from .forms import PaymentForm, TaskForm
