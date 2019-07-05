@@ -15,17 +15,14 @@
         <div class="panel-heading">
 
             <!-- MYBLOCK -->
-
-           <p class="panel-subtitle">Filter years</p>
-
+            <font class="panel-subtitle">Filter years: </font>
             {% for year in payments_years %}
                 <a href="{% url 'payments:filter-payments' year curr_month %}" class="">
                     <span class="label label-default">[ {{ year }} ]</span>
                 </a>
             {% endfor %}
-
-            <p class="panel-subtitle">Filter months</p>
-
+            <br>
+            <font class="panel-subtitle">Filter months: </font>
             {% for month in payments_months %}
                 <a href="{% url 'payments:filter-payments' curr_year month %}" class="">
                     <span class="label label-default">[ {{ month }} ]</span>
