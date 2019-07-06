@@ -6,8 +6,8 @@ from django.http import HttpResponse, Http404
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 
-from .models import Payment, Task
-from .forms import PaymentForm, TaskForm
+from .models import Payment, Task, Month
+from .forms import PaymentForm, TaskForm, MonthForm
 
 
 def go_admin(request):
@@ -19,7 +19,15 @@ def docs_view(request):
 
 
 def hours_view(request):
-    return render(request, "payments/hours.html")
+    hours = Month.objects.all().order_by('-id')
+    if request.method == 'POST':
+        form = MonthForm(request.POST)
+        if form.is_valid():
+            form.save()
+    else:
+        form = MonthForm()
+    return render(request, "payments/hours.html", {'hours': hours,
+                                                   'form': form})
 
 
 def tasks_view(request):

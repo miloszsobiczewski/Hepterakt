@@ -1,6 +1,6 @@
 import datetime
 from django import forms
-from .models import Payment, Task
+from .models import Payment, Task, Month
 
 
 class PaymentForm(forms.ModelForm):
@@ -28,3 +28,11 @@ class TaskForm(forms.ModelForm):
     class Meta:
         model = Task
         fields = ['name', 'deadline']
+
+
+class MonthForm(forms.ModelForm):
+    vacation_hours = forms.IntegerField(required=False)
+
+    class Meta:
+        model = Month
+        fields = ['work_hours', 'vacation_hours']

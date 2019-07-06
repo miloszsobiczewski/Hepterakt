@@ -10,3 +10,4 @@
 - [ ] todo: middleware
 - [ ] todo: h tracking
 - [ ] todo: view only file name not whole path
+- [ ] todo: fix setting paid

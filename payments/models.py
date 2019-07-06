@@ -29,3 +29,12 @@ class Task(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Month(models.Model):
+    date = models.DateField(auto_now_add=True)
+    work_hours = models.IntegerField()
+    vacation_hours = models.IntegerField(default=0)
+
+    def __str__(self):
+        return str(self.date.year) + "." + str(self.date.month) + "-" + str(self.work_hours)
