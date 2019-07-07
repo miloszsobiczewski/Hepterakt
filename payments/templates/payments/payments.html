@@ -67,7 +67,7 @@
                         <i class="lnr lnr-checkmark-circle" style="color:green"></i>
                     {% else %}
                         <form class="site-form" action="{% url 'payments:payments' %}" method="post" id="GetDone">
-                       {% csrf_token %}
+                        {% csrf_token %}
                         <button type="submit" form="GetDone" name="Done" value="{{ payment.id }}">
                             <i class="lnr lnr-cross-circle" style="color:red"></i>
                         </button>
@@ -77,7 +77,7 @@
                 <td>{{ payment.name }}</td>
                 <td>{{ payment.date}}</td>
                 <td>{{ payment.value }}</td>
-                <td>{{ payment.invoice }}
+                <td>{{ payment.filename|truncatechars:80 }}
                     {% if payment.invoice %}
                     <button type="submit" form="Download" name="FilePath" value="{{ payment.invoice }}">
                         <i class="lnr lnr-download" style="color:red"></i>

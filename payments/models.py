@@ -1,3 +1,5 @@
+import os
+
 from django.db import models
 
 
@@ -20,6 +22,9 @@ class Payment(models.Model):
 
     def __str__(self):
         return self.name
+
+    def filename(self):
+        return os.path.basename(self.invoice.name)
 
 
 class Task(models.Model):

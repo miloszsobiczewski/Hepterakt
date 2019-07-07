@@ -8,6 +8,6 @@
 - [x] todo: filtrowanie wydatków - domyślnie po year/mth, możliwość zmiany (poprzedni, następny)
 - [ ] todo: add no payment documents like hour reports, my invoices ect
 - [ ] todo: middleware
-- [ ] todo: h tracking
+- [x] todo: h tracking
 - [ ] todo: view only file name not whole path
 - [ ] todo: fix setting paid

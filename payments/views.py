@@ -63,6 +63,9 @@ def payments_view(request, curr_year=None, curr_month=None):
     if curr_year is None:
         curr_year = datetime.now().year
     payments = Payment.objects.all().order_by('-id').filter(date__month=curr_month, date__year=curr_year)
+
+    # import pdb; pdb.set_trace()
+
     if request.method == 'POST':
         paid = request.POST.get('Done', False)
         if paid:
