@@ -55,10 +55,7 @@
                 <th>Desc</th>
               </tr>
 
-            <form class="site-form" action="{% url 'payments:download' %}" method="post" id="Download">
-
             {% for payment in payments %}
-            {% csrf_token %}
 
               <tr>
                 <td>{{ forloop.counter }}
@@ -67,10 +64,10 @@
                         <i class="lnr lnr-checkmark-circle" style="color:green"></i>
                     {% else %}
                         <form class="site-form" action="{% url 'payments:payments' %}" method="post" id="GetDone">
-                        {% csrf_token %}
-                        <button type="submit" form="GetDone" name="Done" value="{{ payment.id }}">
-                            <i class="lnr lnr-cross-circle" style="color:red"></i>
-                        </button>
+                            {% csrf_token %}
+                            <button type="submit" form="GetDone" name="Done" value="{{ payment.id }}">
+                                <i class="lnr lnr-cross-circle" style="color:red"></i>
+                            </button>
                         </form>
                     {% endif %}
                 </td>
@@ -79,9 +76,12 @@
                 <td>{{ payment.value }}</td>
                 <td>{{ payment.filename|truncatechars:80 }}
                     {% if payment.invoice %}
-                    <button type="submit" form="Download" name="FilePath" value="{{ payment.invoice }}">
-                        <i class="lnr lnr-download" style="color:red"></i>
-                    </button>
+<!--                        <form class="site-form" action="{% url 'payments:download' %}" method="post" id="Download">-->
+<!--                        {% csrf_token %}-->
+<!--                            <button type="submit" form="Download" name="FilePath" value="{{ payment.invoice }}">-->
+<!--                                <i class="lnr lnr-download" style="color:red"></i>-->
+<!--                            </button>-->
+<!--                        </form>-->
                     {% endif %}
                 </td>
                 <td>{{ payment.category }}</td>
@@ -89,7 +89,6 @@
               </tr>
 
             {% endfor %}
-            </form>
             </table>
 
             <!-- END MYBLOCK -->

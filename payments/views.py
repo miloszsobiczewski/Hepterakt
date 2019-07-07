@@ -63,13 +63,11 @@ def payments_view(request, curr_year=None, curr_month=None):
     if curr_year is None:
         curr_year = datetime.now().year
     payments = Payment.objects.all().order_by('-id').filter(date__month=curr_month, date__year=curr_year)
-
-    # import pdb; pdb.set_trace()
-
     if request.method == 'POST':
+        edit_payments = Payment.objects.all().order_by('-id')
         paid = request.POST.get('Done', False)
         if paid:
-            payments.filter(pk=paid).update(paid=True)
+            edit_payments.filter(pk=paid).update(paid=True)
             form = PaymentForm()
         else:
             form = PaymentForm(request.POST, request.FILES)
@@ -77,6 +75,8 @@ def payments_view(request, curr_year=None, curr_month=None):
                 instance = form.save(commit=False)
                 instance.user = request.user
                 instance.save()
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'), {'form': form,
+                                                                            'payments': payments})
     else:
         form = PaymentForm()
     # distinct months for page filtering
