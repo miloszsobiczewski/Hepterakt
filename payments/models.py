@@ -26,6 +26,9 @@ class Payment(models.Model):
     def filename(self):
         return os.path.basename(self.invoice.name)
 
+    class Meta:
+        ordering = ('date',)
+
 
 class Task(models.Model):
     name = models.CharField(max_length=200)

@@ -1,5 +1,5 @@
-import os, time
-from datetime import datetime
+import os
+from datetime import datetime, date, timedelta
 from dateutil.relativedelta import relativedelta
 from django.conf import settings
 from django.http import HttpResponse, Http404
@@ -53,8 +53,10 @@ def tasks_view(request):
         form = TaskForm()
     else:
         form = TaskForm()
+    warning_date = date.today() + timedelta(days=7)
     return render(request, "payments/tasks.html", {'tasks': tasks,
-                                                   'form': form})
+                                                   'form': form,
+                                                   'warning_date': warning_date})
 
 
 def payments_view(request, curr_year=None, curr_month=None):

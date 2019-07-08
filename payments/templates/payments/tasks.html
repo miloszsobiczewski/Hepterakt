@@ -55,12 +55,12 @@
                 <th>Deadline</th>
               </tr>
 
-
             <form class="site-form" action="{% url 'payments:tasks' %}" method="post" id="GetDone">
             {% for task in tasks %}
             {% csrf_token   %}
+
               <tr>
-                <td>{{ forloop.counter }}</td>
+                <td><font color="red">{{ forloop.counter }} </font></td>
                 <td>
                     {% if task.done %}
                         <span class="lnr lnr-checkmark-circle" style="color:green"></span>
@@ -71,9 +71,18 @@
                     {% endif %}
                 </td>
                 <td>{{ task.name}}</td>
-                <td>{{ task.deadline }}</td>
+                <td>
+                    {{ task.deadline }}
+                        {% if task.deadline < warning_date and task.done == False %}
+                            <span class="label label-danger">deadline is coming</span>
+                        {% elif task.deadline == warning_date %}
+                            <img src="{% static '/assets/img/skull-crossbones-solid.svg' %}" width="15x"/>
+                            <img src="{% static '/assets/img/skull-crossbones-solid.svg' %}" width="15x"/>
+                            <img src="{% static '/assets/img/skull-crossbones-solid.svg' %}" width="15x"/>
+                        {% else %}
+                        {% endif %}
+                </td>
               </tr>
-
             {% endfor %}
             </form>
             </table>
