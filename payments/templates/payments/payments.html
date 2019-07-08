@@ -74,14 +74,14 @@
                 <td>{{ payment.name }}</td>
                 <td>{{ payment.date}}</td>
                 <td>{{ payment.value }}</td>
-                <td>{{ payment.filename|truncatechars:80 }}
+                <td>
                     {% if payment.invoice %}
-<!--                        <form class="site-form" action="{% url 'payments:download' %}" method="post" id="Download">-->
-<!--                        {% csrf_token %}-->
-<!--                            <button type="submit" form="Download" name="FilePath" value="{{ payment.invoice }}">-->
-<!--                                <i class="lnr lnr-download" style="color:red"></i>-->
-<!--                            </button>-->
-<!--                        </form>-->
+                        <form class="site-form" action="{% url 'payments:download' %}" method="post" id="Download">
+                        {% csrf_token %}
+                            <button type="submit" form="Download" name="FilePath" value="{{ payment.invoice }}">
+                                {{ payment.filename|truncatechars:30 }} <i class="lnr lnr-download" style="color:red"></i>
+                            </button>
+                        </form>
                     {% endif %}
                 </td>
                 <td>{{ payment.category }}</td>
