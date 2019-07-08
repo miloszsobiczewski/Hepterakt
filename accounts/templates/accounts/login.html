@@ -35,39 +35,19 @@
 								<div class="logo text-center"><img src="{% static '/assets/img/logo-ruch.jpeg' %}" height="10%" width="40%" alt="Logo"></div>
 								<p class="lead">Zaloguj się</p>
 							</div>
-<!--							<form class="form-auth-small" action="index.php">-->
-<!--								<div class="form-group">-->
-<!--									<label for="signin-email" class="control-label sr-only">Email</label>-->
-<!--									<input type="email" class="form-control" id="signin-email" value="Email" placeholder="Email">-->
-<!--								</div>-->
-<!--								<br>-->
-<!--								<div class="form-group">-->
-<!--									<label for="signin-password" class="control-label sr-only">Password</label>-->
-<!--									<input type="name" class="form-control" id="signin-password" value="hasło" placeholder="Password">-->
-<!--								</div>-->
-<!--								<div class="form-group clearfix">-->
-<!--									<label class="fancy-checkbox element-left">-->
-<!--										<input type="checkbox">-->
-<!--&lt;!&ndash;										<span>Remember me</span>&ndash;&gt;-->
-<!--									</label>-->
-<!--								</div>-->
-<!--								<br>-->
-<!--								<button type="submit" class="btn btn-primary btn-lg btn-block">LOGIN</button>-->
-<!--								<div class="bottom">-->
-<!--									<span class="helper-text"><i class="lnr lnr-pencil"></i> <a href="{% url 'home:register' %}">Register</a></span>-->
-<!--								</div>-->
-<!--							</form>-->
 
-<form method="post" action="{% url 'home:login' %}" id="login">
-{% csrf_token %}
+							<form method="post" action="{% url 'accounts:login' %}" id="login">
 
-{{ form }}
+								{% csrf_token %}
 
-<button class="btn btn-primary btn-block" form="login" type="submit">Login</button>
-<div class="bottom">
-<span class="helper-text"><i class="lnr lnr-pencil"></i> <a href="{% url 'home:register' %}">Register</a></span>
-</div>
-</form>
+								{{ form }}
+
+								<br>
+								<button class="btn btn-primary btn-block" form="login" type="submit">Login</button>
+								<!--<div class="bottom">-->
+								<!--<span class="helper-text"><i class="lnr lnr-pencil"></i> <a href="#">Register</a></span>-->
+								<!--</div>-->
+							</form>
 
 						</div>
 					</div>
