@@ -26,7 +26,7 @@ python manage.py runserver
 - [x] todo: przeglądanie historii wydatków
 - [x] todo: filtrowanie wydatków - domyślnie po year/mth, możliwość zmiany (poprzedni, następny)
 - [ ] todo: add no payment documents like hour reports, my invoices ect
-- [ ] todo: middleware
+- [x] todo: middleware
 - [x] todo: h tracking
 - [x] todo: view only file name not whole path
 - [x] todo: fix setting paid
