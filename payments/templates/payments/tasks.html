@@ -97,6 +97,8 @@
 
             <!-- MYBLOCK -->
 
+            <p class="panel-subtitle">Add new task.</p>
+
             <form class="site-from" action=" {% url 'payments:tasks' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form }}

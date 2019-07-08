@@ -16,22 +16,6 @@
 
             <!-- MYBLOCK -->
 
-            <form class="site-from" action=" {% url 'payments:hours' %}" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form }}
-            <input type="submit" value="add">
-            </form>
-
-            <!-- END MYBLOCK -->
-
-        </div>
-    </div>
-
-    <div class="panel panel-headline">
-        <div class="panel-heading">
-
-            <!-- MYBLOCK -->
-
 
             <p class="panel-subtitle"><u>Month hours table</u></p>
 
@@ -59,7 +43,22 @@
         </div>
     </div>
 
+    <div class="panel panel-headline">
+        <div class="panel-heading">
 
+            <!-- MYBLOCK -->
 
+            <p class="panel-subtitle">Add hour report.</p>
+
+            <form class="site-from" action=" {% url 'payments:hours' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="add">
+            </form>
+
+            <!-- END MYBLOCK -->
+
+        </div>
+    </div>
 
 {% endblock %}
