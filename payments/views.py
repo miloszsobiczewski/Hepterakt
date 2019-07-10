@@ -84,7 +84,9 @@ def payments_view(request, curr_year=None, curr_month=None):
     # distinct months for page filtering
     payments_dates = Payment.objects.values_list('date', flat=True)
     payments_months = list(set([x.month for x in payments_dates]))
+    payments_months.sort(reverse=True)
     payments_years = list(set([x.year for x in payments_dates]))
+    payments_years.sort(reverse=True)
     return render(request, "payments/payments.html", {'payments': payments,
                                                       'payments_months': payments_months,
                                                       'payments_years': payments_years,

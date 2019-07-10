@@ -28,13 +28,6 @@
 
             </form>
 
-<!--            <div class="alert-success">-->
-<!--                fsfdsfsdf-->
-<!--            </div>-->
-<!--            <div class="alert-danger">-->
-<!--                fsfdsfsdf-->
-<!--            </div>-->
-
             <!-- END MYBLOCK -->
 
         </div>
@@ -60,7 +53,7 @@
             {% csrf_token   %}
 
               <tr>
-                <td><font color="red">{{ forloop.counter }} </font></td>
+                <td>{{ forloop.counter }}</td>
                 <td>
                     {% if task.done %}
                         <span class="lnr lnr-checkmark-circle" style="color:green"></span>
