@@ -21,7 +21,7 @@ class Payment(models.Model):
     paid = models.BooleanField()
 
     def __str__(self):
-        return self.name
+        return '[%s] %s - %s' % (str(self.date), self.name, self.filename())
 
     def filename(self):
         return os.path.basename(self.invoice.name)
