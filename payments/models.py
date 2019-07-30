@@ -40,9 +40,10 @@ class Task(models.Model):
 
 
 class Month(models.Model):
-    date = models.DateField(auto_now_add=True)
-    work_hours = models.IntegerField()
-    vacation_hours = models.IntegerField(default=0)
+    date = models.DateField()
+    work_hours = models.PositiveIntegerField()
+    vacation_hours = models.PositiveIntegerField(default=0)
+    overtime_hours = models.PositiveIntegerField(default=0)
 
     def __str__(self):
         return str(self.date.year) + "." + str(self.date.month) + "-" + str(self.work_hours)

@@ -24,14 +24,16 @@
                 <th>No.</th>
                 <th>Date</th>
                 <th>Work hours</th>
+                <th>Overtime hours</th>
                 <th>Vacation hours</th>
               </tr>
 
             {% for month in hours %}
               <tr>
-                <td>{{ forloop.counter }}</td>
+                <td>{{ forloop.revcounter }}</td>
                 <td>{{ month.date }}</td>
-                <td>{{ month.work_hours }}</td>
+                <td>{{ month.work_hours }}
+                <td>{{ month.overtime_hours }}</td>
                 <td>{{ month.vacation_hours }}</td>
               </tr>
             {% endfor %}

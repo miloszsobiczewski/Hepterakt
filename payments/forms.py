@@ -20,10 +20,9 @@ class PaymentForm(forms.ModelForm):
 class TaskForm(forms.ModelForm):
     name = forms.CharField(required=True, widget=forms.TextInput(
         attrs={'placeholder': 'Task name', 'style': 'width: 400px'}), label=False)
-    deadline = forms.ChoiceField(
-        choices=[(datetime.date(datetime.datetime.now().year, datetime.datetime.now().month, x),
-                  ('%s-%s-%s' % (str(x), datetime.datetime.now().month, datetime.datetime.now().year)))
-                 for x in range(1, 32)], required=True)
+    deadline = forms.DateField(widget=forms.SelectDateWidget(
+        empty_label=("Choose Year", "Choose Month", "Choose Day"),
+    ), required=True)
 
     class Meta:
         model = Task
@@ -32,7 +31,11 @@ class TaskForm(forms.ModelForm):
 
 class MonthForm(forms.ModelForm):
     vacation_hours = forms.IntegerField(required=False)
+    overtime_hours = forms.IntegerField(required=False)
+    date = forms.DateField(widget=forms.SelectDateWidget(
+        empty_label=("Choose Year", "Choose Month", "Choose Day"),
+    ),)
 
     class Meta:
         model = Month
-        fields = ['work_hours', 'vacation_hours']
+        fields = ['date', 'work_hours', 'vacation_hours', 'overtime_hours']
