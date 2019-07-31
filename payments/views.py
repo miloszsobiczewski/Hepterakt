@@ -87,11 +87,13 @@ def payments_view(request, curr_year=None, curr_month=None):
     payments_months.sort(reverse=True)
     payments_years = list(set([x.year for x in payments_dates]))
     payments_years.sort(reverse=True)
+    month_total = sum([value for value in payments.values_list('value', flat=True)])
     return render(request, "payments/payments.html", {'payments': payments,
                                                       'payments_months': payments_months,
                                                       'payments_years': payments_years,
                                                       'curr_month': curr_month,
                                                       'curr_year': curr_year,
+                                                      'month_total': month_total,
                                                       'form': form})
 
 

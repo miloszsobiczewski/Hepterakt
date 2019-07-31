@@ -60,3 +60,4 @@ python manage.py runserver
 - [x] installation instruction in readme and requirements, 
 - [x] list features
 - [x] warning fot deadline approaching
+- [x] podsumowanie wydatków per mth
