@@ -5,9 +5,10 @@ from django.db import models
 
 class Category(models.Model):
     name = models.CharField(max_length=20)
+    percent = models.PositiveIntegerField()
 
     def __str__(self):
-        return self.name
+        return self.name + " [%s]" % self.percent
 
 
 class Payment(models.Model):
