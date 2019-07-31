@@ -66,12 +66,12 @@
                 <td>{{ task.name}}</td>
                 <td>
                     {{ task.deadline }}
-                        {% if task.deadline < warning_date and task.done == False %}
+                        {% if task.deadline <= curr_date and task.done == False %}
+                            <img src="{% static '/assets/img/skull-crossbones-solid.svg' %}" width="15x"/>
+                            <img src="{% static '/assets/img/skull-crossbones-solid.svg' %}" width="15x"/>
+                            <img src="{% static '/assets/img/skull-crossbones-solid.svg' %}" width="15x"/>
+                        {% elif task.deadline < warning_date and task.done == False %}
                             <span class="label label-danger">deadline is coming</span>
-                        {% elif task.deadline == warning_date %}
-                            <img src="{% static '/assets/img/skull-crossbones-solid.svg' %}" width="15x"/>
-                            <img src="{% static '/assets/img/skull-crossbones-solid.svg' %}" width="15x"/>
-                            <img src="{% static '/assets/img/skull-crossbones-solid.svg' %}" width="15x"/>
                         {% else %}
                         {% endif %}
                 </td>
