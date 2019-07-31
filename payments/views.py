@@ -54,9 +54,11 @@ def tasks_view(request):
     else:
         form = TaskForm()
     warning_date = date.today() + timedelta(days=7)
+    curr_date = date.today()
     return render(request, "payments/tasks.html", {'tasks': tasks,
                                                    'form': form,
-                                                   'warning_date': warning_date})
+                                                   'warning_date': warning_date,
+                                                   'curr_date': curr_date})
 
 
 def payments_view(request, curr_year=None, curr_month=None):
