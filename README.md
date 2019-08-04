@@ -61,3 +61,4 @@ python manage.py runserver
 - [x] list features
 - [x] warning fot deadline approaching
 - [x] podsumowanie wydatków per mth
+- [ ] create month model that fill gather monthly payments
