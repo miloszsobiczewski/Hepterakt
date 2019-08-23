@@ -62,3 +62,5 @@ python manage.py runserver
 - [x] warning fot deadline approaching
 - [x] podsumowanie wydatków per mth
 - [ ] create month model that fill gather monthly payments
+- [ ] task, status, assign user
+- [ ] task categories with icons

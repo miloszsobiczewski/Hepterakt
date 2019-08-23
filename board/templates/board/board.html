@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+
+{% block headcontent %}
+
+    <center>
+        <h4>Board</h4>
+    </center>
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="panel panel-headline">
+        <div class="panel-heading">
+
+            <!-- MYBLOCK -->
+            <p class="panel-subtitle"><u>Task board</u></p>
+            <!-- END MYBLOCK -->
+
+        </div>
+    </div>
+
+    <div class="panel panel-headline">
+        <div class="panel-heading">
+
+            <!-- MYBLOCK -->
+
+            <table class="table table-striped">
+
+            {% for task in tasks %}
+              <tr>
+                <td>
+                    <p><b>{{ task.name}}</b></p>
+                    <p>{{ task.description}}</p>
+                    <p>#{{ task.pk }} {{ task.created }} by {{ task.owner}}</p>
+                </td>
+                <td>
+                    <p>{{ task.assigned }}</p>
+                    <p>
+                        {% if task.status == 'Done' %}
+                            <span class="label label-success">Done</span>
+                        {% elif task.status == 'To Do' %}
+                            <span class="label label-danger">To do</span>
+                        {% elif task.status == 'Doing' %}
+                            <span class="label label-warning">Doing</span>
+                        {% else %}
+                            <span class="label label-default">backlog</span>
+                        {% endif %}
+                    </p>
+                    <p><i class="lnr lnr-calendar-full"></i> {{ task.deadline }}</p>
+              </tr>
+            {% endfor %}
+            </table>
+
+            <!-- END MYBLOCK -->
+
+        </div>
+    </div>
+
+    <div class="panel panel-headline">
+        <div class="panel-heading">
+
+            <!-- MYBLOCK -->
+
+            <p class="panel-subtitle">Add new task.</p>
+
+            <form class="site-from" action=" {% url 'board:board' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="create">
+            </form>
+
+            <!-- END MYBLOCK -->
+
+        </div>
+    </div>
+
+{% endblock %}
