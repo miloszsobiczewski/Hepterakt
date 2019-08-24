@@ -31,12 +31,12 @@
             {% for task in tasks %}
               <tr>
                 <td>
-                    <p><b>{{ task.name}}</b></p>
-                    <p>{{ task.description}}</p>
+                    <a href="{% url 'board:edit-task' task.pk %}" class=""><p><b>{{ task.name }}</b></p></a>
+                    <p>{{ task.description|truncatechars:50 }}</p>
                     <p>#{{ task.pk }} {{ task.created }} by {{ task.owner}}</p>
                 </td>
                 <td>
-                    <p>{{ task.assigned }}</p>
+                    <p>@ {{ task.assigned }}</p>
                     <p>
                         {% if task.status == 'Done' %}
                             <span class="label label-success">Done</span>
@@ -67,7 +67,9 @@
 
             <form class="site-from" action=" {% url 'board:board' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            {{ form }}
+                <table>
+                    {{ form.as_table }}
+                </table>
             <input type="submit" value="create">
             </form>
 

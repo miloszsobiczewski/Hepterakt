@@ -21,3 +21,11 @@ def board(request):
     return render(request, "board/board.html", {'tasks': tasks,
                                                 'form': form})
 
+
+def edit_task(request, task_id):
+    task = Task.objects.filter(pk=task_id)
+    # import pdb; pdb.set_trace()
+
+    return render(request, "board/edit_task.html", {'tasks': task})
+
+

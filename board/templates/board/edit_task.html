@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+
+{% block headcontent %}
+
+    <center>
+        <h4>Edit task</h4>
+    </center>
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="panel panel-headline">
+        <div class="panel-heading">
+
+            <!-- MYBLOCK -->
+            {% for task in tasks %}
+
+                <p><b>{{ task.name }}</b></p>
+                <p>{{ task.description}}</p>
+                <p>{{ task.pk }}</p>
+                <p>{{ task.created }}</p>
+                <p>{{ task.owner}}</p>
+                <p>{{ task.assigned }}</p>
+                <p>{{ task.status }}</p>
+                <p>{{ task.deadline }}</p>
+
+            {% endfor %}
+            <!-- END MYBLOCK -->
+
+        </div>
+    </div>
+
+    <form class="site-form" action="{% url 'payments:download' %}" method="post" id="Download">
+    {% csrf_token %}
+        <button>
+            <a href="{% url 'board:board' %}" class=""> Go back</a>
+        </button>
+        <button type="submit" form="Download" name="Filter" value="{{ user_region }}">
+            Delete
+        </button>
+        <button type="submit" form="Download" name="Filter" value="{{ user_region }}">
+            Update
+        </button>
+    </form>
+
+{% endblock %}
