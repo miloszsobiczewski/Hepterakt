@@ -17,7 +17,6 @@ def board(request):
             form.save()
     else:
         form = TaskForm()
-    # import pdb; pdb.set_trace()
     return render(request, "board/board.html", {'tasks': tasks,
                                                 'form': form})
 
@@ -29,3 +28,6 @@ def edit_task(request, task_id):
     return render(request, "board/edit_task.html", {'tasks': task})
 
 
+def closed(request):
+    tasks = Task.objects.filter(closed=True).order_by('-updated')
+    return render(request, "board/closed.html", {'tasks': tasks})

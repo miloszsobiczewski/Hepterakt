@@ -4,7 +4,7 @@
 {% block headcontent %}
 
     <center>
-        <h4>Edit task</h4>
+        <h4>Closed tasks</h4>
     </center>
 
 {% endblock %}
@@ -38,14 +38,11 @@
             <a href="{% url 'board:board' %}" class=""> Go back</a>
         </button>
         <button type="submit" form="Download" name="Filter" value="{{ user_region }}">
-            Delete
+            Forget
         </button>
         <button type="submit" form="Download" name="Filter" value="{{ user_region }}">
-            Update
-        </button>
-        <button type="submit" form="Download" name="Filter" value="{{ user_region }}">
-            Close
-        </button>
+            Reopen
+        </button>        
     </form>
 
 {% endblock %}

@@ -14,7 +14,7 @@ class Task(models.Model):
     status = models.CharField(
         choices=STATUSES, blank=True, default="todo", max_length=64
     )
-    done_ind = models.BooleanField(default=False)
+    closed = models.BooleanField(default=False)
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
     assigned = models.ForeignKey('accounts.UserProfile', on_delete=models.SET_NULL, null=True)
     category = models.CharField(max_length=100, default=None)
@@ -25,4 +25,4 @@ class Task(models.Model):
     deadline = models.DateField()
 
     def __str__(self):
-        return self.name
+        return "%s [ %s ]" % (self.name, self.status)
