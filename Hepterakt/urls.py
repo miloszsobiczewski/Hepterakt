@@ -8,4 +8,5 @@ urlpatterns = [
     url(r'^$', views.payments_view),
     url(r'^payments/', include('payments.urls')),
     url(r'^accounts/', include('accounts.urls')),
+    url(r'^board/', include('board.urls')),
 ]

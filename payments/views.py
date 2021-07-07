@@ -90,13 +90,16 @@ def payments_view(request, curr_year=None, curr_month=None):
     payments_years = list(set([x.year for x in payments_dates]))
     payments_years.sort(reverse=True)
     month_total = sum([payment.value * payment.category.percent/100 for payment in payments])
-    return render(request, "payments/payments.html", {'payments': payments,
-                                                      'payments_months': payments_months,
-                                                      'payments_years': payments_years,
-                                                      'curr_month': curr_month,
-                                                      'curr_year': curr_year,
-                                                      'month_total': month_total,
-                                                      'form': form})
+    month_saved = int(0.18 * float(month_total))
+    data = {'payments': payments,
+            'payments_months': payments_months,
+            'payments_years': payments_years,
+            'curr_month': curr_month,
+            'curr_year': curr_year,
+            'month_total': month_total,
+            'month_saved': month_saved,
+            'form': form}
+    return render(request, "payments/payments.html", data)
 
 
 def download(request):
